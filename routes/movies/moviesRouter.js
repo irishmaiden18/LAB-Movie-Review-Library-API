@@ -7,7 +7,7 @@ const router = express.Router()
 const Movie = require("./moviesModel")
 
 // import movie controller functionality
-const {createMovie, getAllMovies, getGenreMovies, getMovieAndReviewsById} = require("./moviesController")
+const {createMovie, getMovies, getMovieAndReviewsById} = require("./moviesController")
 
 // handle GET requests to /api/v1/movies
 // anything that has to do with our database needs async/await
@@ -16,19 +16,12 @@ router.get("/", async (req, res) => {
     try {
 
         // call the controller function
-        let allMovies = await getAllMovies()
-
-        // if there is a query parameter "genre"
-        if (req.query.genre) {
-
-            // let all movies be the result of calling the getGenreMovies controller function of the query parameter
-            allMovies = await getGenreMovies(req.query.genre)
-        }
+        const movies = await getMovies(req.query.genre)
 
         // send a success response to the user
         res.json ({
             message: "success",
-            payload: allMovies
+            payload: movies 
         })
 
         

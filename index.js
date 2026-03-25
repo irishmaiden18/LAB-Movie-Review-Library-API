@@ -30,10 +30,6 @@ app.use("/api/v1/movies", moviesRouter)
 const reviewsRouter = require("./routes/reviews/reviewsRouter")
 app.use("/api/v1/reviews", reviewsRouter)
 
-
-
-
-
 // set up the port
 const PORT = 3000
 

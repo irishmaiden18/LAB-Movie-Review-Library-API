@@ -23,41 +23,35 @@ const createMovie = async (movieData) => {
     }
 }
 
-// write a function that will get a list of all the movies in the database
-const getAllMovies = async () => {
+// write a function that will get a list of all the movies in the database when there is no genre parameter and a list of filtered movies when there is a genre parameter
+const getMovies = async (genreQuery) => {
 
     try {
 
-        // get a list of all movies in the database
-        const allMovies = await Movie.find()
+        //make movies object
+        let movies = {}
+
+        // if we get a query parameter
+        if (genreQuery) {
+
+            // movies is the list of all movies of that genreQuery
+            movies = await Movie.find({genre: genreQuery})
+
+        } else {
+
+            // get a list of all movies in the database
+            movies = await Movie.find()
+
+        }
 
         // return the movies
-        return allMovies
+        return movies
 
         
     } catch (error) {
         
         // propogates the error to the router file
         throw error 
-    }
-}
-
-// write a function that will get a list of all the movies in the database of a particular genre
-const getGenreMovies = async (genre) => {
-
-    try {
-
-        // get a list of all movies of a particular genre
-        const filteredMovies = Movie.find({genre: `${genre}`})
-
-        // return the filtered movies
-        return filteredMovies
-
-    } catch (error) {
-
-        // propogates the error to the router file
-        throw error
-        
     }
 }
 
@@ -111,4 +105,4 @@ const getMovieAndReviewsById = async (movieId) => {
 }
 
 // export the controller function
-module.exports = {createMovie, getAllMovies, getGenreMovies, getMovieById, getMovieAndReviewsById}
+module.exports = {createMovie, getMovies, getMovieById, getMovieAndReviewsById}
