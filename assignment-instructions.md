@@ -15,12 +15,12 @@ You will practice creating models, controllers, and routers that handle relation
 
 ### 1. Movie Model
 
-- Create a **Movie** schema with fields:
+- DONE-- Create a **Movie** schema with fields:
   - `title` (string, unique, required)
   - `genre` (string, required)
   - `releaseYear` (number, required)
 
-- Export the Movie model.
+- DONE-- Export the Movie model.
 
 ---
 
