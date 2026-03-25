@@ -39,5 +39,15 @@ const getAllReviews = async () => {
     }
 }
 
+// write a function that will get all the reviews associated with a particular movie ID
+const getReviewsByMovieId = async (movieId) => {
+
+    // let filteredReviews be all the reviews in the database that have a movie property matching the id we are searching
+    const filteredReviews = await Review.find({movie: `${movieId}`})
+
+    // return filtered reviews as an array
+    return filteredReviews
+}
+
 // export the controller function(s)
-module.exports = {createReview, getAllReviews}
+module.exports = {createReview, getAllReviews, getReviewsByMovieId}

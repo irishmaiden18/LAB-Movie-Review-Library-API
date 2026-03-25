@@ -41,7 +41,7 @@ You will practice creating models, controllers, and routers that handle relation
   - Create a router for movies with routes:
     -DONE-- `POST /api/movies` — to create a movie.
     -DONE-- `GET /api/movies` - Return all movies and through using queries, allow the user to filter movies by genre
-    - STRETCH GOAL--`GET /api/movies/:movieId` — to get a movie with all reviews associated with that movie. (Do this after seetting up a POST route for your reviews) (see HINT for help)
+    -DONE-- STRETCH GOAL--`GET /api/movies/:movieId` — to get a movie with all reviews associated with that movie. (Do this after seetting up a POST route for your reviews) (see HINT for help)
     
 
   - Create a router for reviews with route:
@@ -55,7 +55,7 @@ You will practice creating models, controllers, and routers that handle relation
 - Use Postman to test the following:
   -DONE-- Add movies by posting movie details.
   -DONE-- Add reviews by posting review details along with the associated movie’s ID.
-  - Retrieve a movie by ID, verifying that the returned data includes the movie details plus an array of its reviews.
+  -DONE-- Retrieve a movie by ID, verifying that the returned data includes the movie details plus an array of its reviews.
 
 ---
 

@@ -1,6 +1,9 @@
 // import the Movie model
 const Movie = require("./moviesModel")
 
+// import review controller functionality
+const {getReviewsByMovieId} = require("../reviews/reviewsController")
+
 // write a function that will take in movie data and create a new movie entry based on that data
 // everything that has to do with out database requires async/await
 const createMovie = async (movieData) => {
@@ -58,5 +61,54 @@ const getGenreMovies = async (genre) => {
     }
 }
 
+// write a funtion that will get a movie from it's id ad return the movie object as well as the associated reviews
+const getMovieById = async (movieId) => {
+
+    try {
+
+        // find a movie based on movieId
+        const foundMovie = Movie.findOne({_id: movieId})
+
+        // return the found movie
+        return foundMovie
+        
+    } catch (error) {
+        
+        //propogates the error to the router file
+        throw error
+
+    }
+
+}
+
+// write a function that will get a movie and associated reviews by id and combine them into a single returnable object
+const getMovieAndReviewsById = async (movieId) => {
+
+    try {
+
+        // get the movie by id
+        let foundMovie = await getMovieById(movieId)
+
+        // get the reviews for the above movie using the id
+        const foundReviews = await getReviewsByMovieId(movieId)
+
+        // change foundMovie to a regular object
+        updatedMovie = foundMovie.toObject()
+
+        // add the reviews property to the updatedMovie object
+        updatedMovie.reviews = foundReviews
+
+        // return the updated movie
+        return updatedMovie
+        
+    } catch (error) {
+        
+        //propogates the error to the router file
+        throw error
+    }
+
+
+}
+
 // export the controller function
-module.exports = {createMovie, getAllMovies, getGenreMovies}
+module.exports = {createMovie, getAllMovies, getGenreMovies, getMovieById, getMovieAndReviewsById}
