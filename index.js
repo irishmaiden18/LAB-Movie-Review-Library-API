@@ -26,6 +26,9 @@ const connectToMongoDB = require("./database/connectToMongoDB")
 const moviesRouter = require("./routes/movies/moviesRouter")
 app.use("/api/v1/movies", moviesRouter)
 
+// import and use the review router
+const reviewsRouter = require("./routes/reviews/reviewsRouter")
+app.use("/api/v1/reviews", reviewsRouter)
 
 
 

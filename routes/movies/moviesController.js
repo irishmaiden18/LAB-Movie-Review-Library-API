@@ -47,6 +47,7 @@ const getGenreMovies = async (genre) => {
         // get a list of all movies of a particular genre
         const filteredMovies = Movie.find({genre: `${genre}`})
 
+        // return the filtered movies
         return filteredMovies
 
     } catch (error) {
