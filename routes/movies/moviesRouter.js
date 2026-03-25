@@ -23,7 +23,6 @@ router.get("/", async (req, res) => {
             message: "success",
             payload: movies 
         })
-
         
     } catch (error) {
         

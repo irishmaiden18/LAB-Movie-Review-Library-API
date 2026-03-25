@@ -1,11 +1,27 @@
 // import the Review model
 const Review = require("./reviewsModel")
 
+// import the movie model
+// const { getMovieById } = require("../movies/moviesController")
+const Movie = require("../movies/moviesModel")
+
 // write a function that will take in review data and create a new data entry based on that data
 // everything that has to do with our database requires async/await
 const createReview = async (reviewData) => {
 
     try {
+
+        // check if the movie id exists in the database'
+        // const movie = await getMovieById(reviewData.movie)
+        const movie = await Movie.findById(reviewData.movie)
+        console.log(movie)
+    
+        // if movie is NOT in our database
+        if(!movie) {
+
+            //propogates the error to the router file
+            throw Error("Movie is NOT found")
+        }
 
         // create the new review the same way we would do normally except inside our controller file
         const newReview = await Review.create(reviewData)
@@ -17,6 +33,7 @@ const createReview = async (reviewData) => {
         
         // propogates the error to the router file
         throw Error("Error creating review")
+        //throw Error(error)
     }
 }
 
@@ -42,11 +59,21 @@ const getAllReviews = async () => {
 // write a function that will get all the reviews associated with a particular movie ID
 const getReviewsByMovieId = async (movieId) => {
 
-    // let filteredReviews be all the reviews in the database that have a movie property matching the id we are searching
-    const filteredReviews = await Review.find({movie: `${movieId}`})
+    try {
+        
+        // let filteredReviews be all the reviews in the database that have a movie property matching the id we are searching
+        const filteredReviews = await Review.find({movie: movieId}).select("reviewText rating -_id")
 
-    // return filtered reviews as an array
-    return filteredReviews
+        // return filtered reviews as an array
+        return filteredReviews
+
+    } catch (error) {
+        
+        // propogates the error to the router file
+        throw error
+
+    }
+    
 }
 
 // export the controller function(s)

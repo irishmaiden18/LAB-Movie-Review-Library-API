@@ -56,24 +56,31 @@ const getMovies = async (genreQuery) => {
 }
 
 // write a funtion that will get a movie from it's id ad return the movie object as well as the associated reviews
-const getMovieById = async (movieId) => {
+// const getMovieById = async (movieId) => {
 
-    try {
+//     try {
 
-        // find a movie based on movieId
-        const foundMovie = Movie.findOne({_id: movieId})
+//         // find a movie based on movieId
+//         // .findById - use this when searching by ID
+//         // use .findOne for searching by any other property EXCEPT ID
+//         const foundMovie = await Movie.findById(movieId)
 
-        // return the found movie
-        return foundMovie
+//         // check if ID is in the database
+//         if(!foundMovie) {
+//             throw Error("Movie NOT found!")
+//         }
+
+//         // return the found movie
+//         return foundMovie
         
-    } catch (error) {
+//     } catch (error) {
         
-        //propogates the error to the router file
-        throw error
+//         //propogates the error to the router file
+//         throw error
 
-    }
+//     }
 
-}
+// }
 
 // write a function that will get a movie and associated reviews by id and combine them into a single returnable object
 const getMovieAndReviewsById = async (movieId) => {
@@ -81,7 +88,8 @@ const getMovieAndReviewsById = async (movieId) => {
     try {
 
         // get the movie by id
-        let foundMovie = await getMovieById(movieId)
+        // let foundMovie = await getMovieById(movieId)
+        const foundMovie = await Movie.findById(movieId)
 
         // get the reviews for the above movie using the id
         const foundReviews = await getReviewsByMovieId(movieId)
@@ -100,9 +108,7 @@ const getMovieAndReviewsById = async (movieId) => {
         //propogates the error to the router file
         throw error
     }
-
-
 }
 
 // export the controller function
-module.exports = {createMovie, getMovies, getMovieById, getMovieAndReviewsById}
+module.exports = {createMovie, getMovies, getMovieAndReviewsById}
