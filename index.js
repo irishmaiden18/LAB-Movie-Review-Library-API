@@ -22,6 +22,10 @@ app.use(logger("dev"))
 // connect to MongoDB
 const connectToMongoDB = require("./database/connectToMongoDB")
 
+// import and use the movie router
+const moviesRouter = require("./routes/movies/moviesRouter")
+app.use("/api/v1/movies", moviesRouter)
+
 
 
 
