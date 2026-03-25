@@ -13,7 +13,9 @@ const reviewSchema = new mongoose.Schema (
         },
         rating: {
             type: Number,
-            required: true
+            required: true,
+            min: 1,
+            max: 5
         },
         movie: {
             // to refer to another data type that we've created in our MongoDB database, utilize both the ObjectId type and a reference (ref) to the specific model we want
