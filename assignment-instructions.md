@@ -45,7 +45,7 @@ You will practice creating models, controllers, and routers that handle relation
     
 
   - Create a router for reviews with route:
-    - `GET /api/reviews` - get all reviews
+    -DONE-- `GET /api/reviews` - get all reviews
     -DONE-- `POST /api/reviews` — to create a review linked to a movie.
 
 ---
@@ -53,8 +53,8 @@ You will practice creating models, controllers, and routers that handle relation
 ### Testing
 
 - Use Postman to test the following:
-  - Add movies by posting movie details.
-  - Add reviews by posting review details along with the associated movie’s ID.
+  -DONE-- Add movies by posting movie details.
+  -DONE-- Add reviews by posting review details along with the associated movie’s ID.
   - Retrieve a movie by ID, verifying that the returned data includes the movie details plus an array of its reviews.
 
 ---

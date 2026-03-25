@@ -20,5 +20,24 @@ const createReview = async (reviewData) => {
     }
 }
 
+// write a function that will get a list of all the reviews in the database
+const getAllReviews = async () => {
+
+    try {
+
+        // get a list of all reviews in the database
+        const allReviews = await Review.find()
+
+        // return the reviews
+        return allReviews
+
+        
+    } catch (error) {
+        
+        // propogates the error to the router file
+        throw error 
+    }
+}
+
 // export the controller function(s)
-module.exports = createReview
+module.exports = {createReview, getAllReviews}
