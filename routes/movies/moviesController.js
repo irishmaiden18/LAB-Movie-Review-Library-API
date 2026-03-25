@@ -20,5 +20,42 @@ const createMovie = async (movieData) => {
     }
 }
 
+// write a function that will get a list of all the movies in the database
+const getAllMovies = async () => {
+
+    try {
+
+        // get a list of all movies in the database
+        const allMovies = await Movie.find()
+
+        // return the movies
+        return allMovies
+
+        
+    } catch (error) {
+        
+        // propogates the error to the router file
+        throw error 
+    }
+}
+
+// write a function that will get a list of all the movies in the database of a particular genre
+const getGenreMovies = async (genre) => {
+
+    try {
+
+        // get a list of all movies of a particular genre
+        const filteredMovies = Movie.find({genre: `${genre}`})
+
+        return filteredMovies
+
+    } catch (error) {
+
+        // propogates the error to the router file
+        throw error
+        
+    }
+}
+
 // export the controller function
-module.exports = createMovie
+module.exports = {createMovie, getAllMovies, getGenreMovies}

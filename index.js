@@ -3,7 +3,7 @@
 // npm i dotenv express mongoose morgan
 
 // import express
-const express = requre("express")
+const express = require("express")
 
 // set up the express app
 const app = express()
