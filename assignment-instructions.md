@@ -26,12 +26,12 @@ You will practice creating models, controllers, and routers that handle relation
 
 ### 2. Review Model
 
-- Create a **Review** schema with fields:
+- DONE-- Create a **Review** schema with fields:
   - `reviewText` (string, required)
   - `rating` (number, required, between 1 and 5)
   - `movie` (ObjectId referencing the Movie collection, required)
 
-- Export the Review model.
+- DONE-- Export the Review model.
 
 ---
 
